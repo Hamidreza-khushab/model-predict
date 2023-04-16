@@ -1,6 +1,6 @@
 const Papa = require('papaparse');
 const fs = require('fs');
-const tf = require('@tensorflow/tfjs-node');
+// const tf = require('@tensorflow/tfjs-node');
 
 async function run() {
   const csvFilePath = 'eur_usd.csv';
@@ -11,7 +11,8 @@ async function run() {
     dynamicTyping: true,
   }).data;
 
-  const tensorData = data.map(d => [d.Open, d.Close, d.Volume]).reverse();
+  const tensorData = data.map(d => [d.Open, d.Close, d.Volume]);
+  console.log(tensorData);
   const xs = tensorData.slice(0, tensorData.length - 1);
   const ys = tensorData.slice(1);
 
